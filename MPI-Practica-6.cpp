@@ -37,8 +37,7 @@ int main(int argc, char* argv[])
 
                 // Comprueba la condición de salida
                 if (dato == 0) {
-                    MPI_Finalize();
-                    return 0;
+                    break;
                 }
 
                 std::cout << "Proceso " << mirango << ": recibiendo resultados...\n";
