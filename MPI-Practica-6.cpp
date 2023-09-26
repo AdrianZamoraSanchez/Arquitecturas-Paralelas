@@ -1,6 +1,7 @@
 /*
 * Autor: Adrián Zamora Sánchez
 * Fecha: 26/09/2023
+* Ejecución con: "mpiexec.exe -n 2 MPI-Practica-6.exe"
 * 
 * Descripción: Programa que cálcula factoriales,
 * para ello un proceso 0 pide los numeros de los cuales
