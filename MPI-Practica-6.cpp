@@ -57,6 +57,11 @@ int main(int argc, char* argv[])
                 // Espera a recibir el numero
                 MPI_Wait(&request_recv, MPI_STATUS_IGNORE); 
 
+                // Comprueba la condición de salida
+                if (dato == 0) {
+                    break;
+                }
+
                 // Calcula el factorial
                 int factorial = 1;
                 for (int i = 1; i <= dato; ++i) {
