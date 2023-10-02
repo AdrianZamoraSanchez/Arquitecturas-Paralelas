@@ -51,11 +51,6 @@ int main(int argc, char* argv[]) {
         }
     }
 
-    // Definimos una struct que sea un array con 
-    typedef struct {
-        int data[N * (N + 1) / 2];
-    } TriangularSuperiorMatrix;
-
     // Rellena la matriz con numeros aleatorios en el proceso 0 solamente
     if (mi_rango == 0) {
         srand(time(NULL));
