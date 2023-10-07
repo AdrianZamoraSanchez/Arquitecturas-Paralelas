@@ -20,7 +20,6 @@
 int main(int argc, char* argv[]) {
     // Variables de los procesos MPI
     int mi_rango, tamano;
-    char nombre[MPI_MAX_PROCESSOR_NAME];
 
     // Inicializamos el entorno MPI
     MPI_Init(&argc, &argv);
@@ -42,13 +41,6 @@ int main(int argc, char* argv[]) {
     // Asignamos partes de ese bloque contiguo a cada fila de la matriz
     for (int i = 0; i < N; i++){
         matriz[i] = rm + i * N;
-    }
-
-    // Una vez tenemos reservada la memoria de la matriz la llenamos de 0
-    for (int i = 0; i < N; i++){
-        for (int j = 0; j < N; j++){
-            matriz[i][j] = 0;
-        }
     }
 
     // Rellena la matriz con numeros aleatorios en el proceso 0 solamente
@@ -76,7 +68,7 @@ int main(int argc, char* argv[]) {
     Triangular inferior
     Para leer los datos:
         Leemos al principio solamente el primer numero, en las siguiente lineas leemos 1 más cada vez
-        (la triangular inferior tiene la fila 1 con el primer elemento y en las siguiente comienza a haber 
+        (la triangular inferior tiene la fila 1 con el primer elemento y en las siguiente comienza a haber
         un elemento más cada vez)
 
     Para saltar a la posición desde la que se leen los datos:
@@ -210,6 +202,7 @@ int main(int argc, char* argv[]) {
     
     // Liberamos los punterios a las matrices y los bloques de memoria
     free(matriz);
+    free(rm);
 
     // Liberamos el tipo matrizTriangular
     MPI_Type_free(&triangularInf);
