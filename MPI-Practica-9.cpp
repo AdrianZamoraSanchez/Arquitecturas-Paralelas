@@ -67,10 +67,15 @@ int main(int argc, char* argv[])
 		for (int i = 0; i < tamanoProcesosUtiles; i++) {
 			rangos[i] = i;
 		}
-
-		MPI_Comm_group(MPI_COMM_WORLD, &grupoOriginal); // Se recogen todos los procesos de comm world
-		MPI_Group_incl(grupoOriginal, tamanoProcesosUtiles, rangos, &nuevoGrupo); // Crear un nuevo grupo con los procesos especificados
-		MPI_Comm_create(MPI_COMM_WORLD, nuevoGrupo, &comunicadorNuevo); // Crear el nuevo comunicador
+		
+		// Se recogen todos los procesos de comm world
+		MPI_Comm_group(MPI_COMM_WORLD, &grupoOriginal); 
+		
+		// Crear un nuevo grupo con los procesos especificados
+		MPI_Group_incl(grupoOriginal, tamanoProcesosUtiles, rangos, &nuevoGrupo);
+		
+		// Crear el nuevo comunicador
+		MPI_Comm_create(MPI_COMM_WORLD, nuevoGrupo, &comunicadorNuevo); 
 	}
 
 	// Se finalizan los procesos que no se utilizan nunca
